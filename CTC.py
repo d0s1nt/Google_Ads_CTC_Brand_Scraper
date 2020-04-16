@@ -6,6 +6,7 @@ from datetime import datetime
 import docx
 import io
 import ast
+import time
 
 #Insert brands
 brands = ['']
@@ -40,7 +41,11 @@ for brand in brands:
         }
 
         # make the http GET request to Scale SERP
-        api_result = requests.get('https://api.scaleserp.com/search', params)
+        try:
+            api_result = requests.get('https://api.scaleserp.com/search', params)
+        except:
+            time.sleep(30)
+            api_result = requests.get('https://api.scaleserp.com/search', params, headers={'Connection':'close'})
 
         # print the JSON response from Scale SERP
         result = api_result.json()
