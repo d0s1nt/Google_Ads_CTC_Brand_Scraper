@@ -124,10 +124,10 @@ for brand in brands:
 
     df = pd.DataFrame(output,
                       columns=['Search Terms', 'Google Ads', 'Click to Call', f'Contains "{brand}"', 'Raw SERP'])
-    df.to_excel(f"{brand}_{current_date}.xlsx", index=False)
+    df.to_excel(f"{brand}_CMC_{current_date}.xlsx", index=False)
 
     doc = docx.Document()
-    doc.add_heading(f'Google results: "{brand}"', 0)
+    doc.add_heading(f'CMC Google results: "{brand}"', 0)
     font = doc.styles['Normal'].font
     font.name = 'Calibri'
     font.size = docx.shared.Pt(11)
@@ -210,4 +210,4 @@ for brand in brands:
                             doc.add_paragraph("")
                         except:
                             doc.add_paragraph("No image found, website not available")
-    doc.save(f'{brand}_{current_date}.docx')
+    doc.save(f'{brand}_CMC_{current_date}.docx')
